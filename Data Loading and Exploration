@@ -1,0 +1,10 @@
+import pandas as pd
+import numpy as np
+
+# Load dataset
+data = pd.read_csv("Telco-Customer-Churn.csv")
+
+# Explore basic structure
+print(data.head())
+print(data.info())
+print(data.isnull().sum())
