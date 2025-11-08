@@ -1,0 +1,7 @@
+# Add predicted churn probability for dashboard
+churn_prob = rf_model.predict_proba(X_test)[:, 1]
+results = pd.DataFrame({'CustomerID': data.iloc[y_test.index]['customerID'],
+                        'ActualChurn': y_test,
+                        'PredictedChurn': y_pred_rf,
+                        'ChurnProbability': churn_prob})
+results.to_csv("churn_predictions.csv", index=False)
