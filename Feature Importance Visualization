@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+
+# Feature importance from Random Forest
+importances = rf_model.feature_importances_
+indices = np.argsort(importances)[-10:]  # Top 10
+
+plt.figure(figsize=(8,5))
+plt.title("Top 10 Important Features Influencing Churn")
+plt.barh(range(len(indices)), importances[indices], align='center')
+plt.yticks(range(len(indices)), [X.columns[i] for i in indices])
+plt.xlabel('Relative Importance')
+plt.show()
+
