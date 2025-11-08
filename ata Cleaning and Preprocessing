@@ -1,0 +1,15 @@
+# Replace empty strings with NaN
+data.replace(" ", np.nan, inplace=True)
+
+# Drop missing values or impute as needed
+data.dropna(inplace=True)
+
+# Encode categorical variables
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+for col in data.select_dtypes(include=['object']).columns:
+    data[col] = le.fit_transform(data[col])
+
+# Define features and target
+X = data.drop('Churn', axis=1)
+y = data['Churn']
